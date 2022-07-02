@@ -1,9 +1,9 @@
 package org.iproute.windows11.config;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 /**
  * RestExceptionHandler
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
  * @author zhuzhenjie
  * @since 2022/7/1
  */
-@RestControllerAdvice
+@ControllerAdvice
 @Slf4j
 public class RestExceptionHandler {
 
