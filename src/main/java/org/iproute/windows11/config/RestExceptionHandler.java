@@ -1,6 +1,7 @@
 package org.iproute.windows11.config;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -17,8 +18,8 @@ public class RestExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     @ResponseBody
-    public String handleException(Exception e) {
+    public ResponseEntity<Void> handleException(Exception e) {
         log.error("Exception", e);
-        return "404";
+        return ResponseEntity.status(444).build();
     }
 }
