@@ -9,7 +9,7 @@ import java.io.IOException;
  * @since 2022/7/1
  */
 public class CmdUtils {
-    public static void restartComputer() {
+    public static void restart() {
         try {
             Runtime.getRuntime().exec("shutdown -r -t 0");
         } catch (IOException e) {
@@ -17,4 +17,11 @@ public class CmdUtils {
         }
     }
 
+    public static void shutdown() {
+        try {
+            Runtime.getRuntime().exec("shutdown /p");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

@@ -52,9 +52,27 @@ public class ComputerController {
             } catch (InterruptedException e) {
             }
 
-            CmdUtils.restartComputer();
+            CmdUtils.restart();
         }).start();
         return "restart success";
+    }
+
+    @PostMapping("/computer/shutdown")
+    @SuppressWarnings("all")
+    public String shutdown(@RequestBody Req req) {
+        String uuid = req.getUuid();
+        if (StringUtils.isBlank(uuid) || !StringUtils.equals(uuid, uuidMap.get("uuid"))) {
+            return "shutdown failed";
+        }
+        new Thread(() -> {
+            try {
+                Thread.sleep(5 * 1000);
+                log.info("shutdown computer");
+            } catch (InterruptedException e) {
+            }
+            CmdUtils.shutdown();
+        }).start();
+        return "shutdown success";
     }
 
     @Scheduled(fixedRate = 1000L * 30)
