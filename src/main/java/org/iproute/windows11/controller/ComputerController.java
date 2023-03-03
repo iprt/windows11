@@ -2,7 +2,7 @@ package org.iproute.windows11.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
-import org.iproute.windows11.Utils.CmdUtils;
+import org.iproute.windows11.utils.CmdUtils;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,7 +20,7 @@ import java.util.concurrent.ConcurrentHashMap;
 @RestController
 @Slf4j
 public class ComputerController {
-    private ConcurrentHashMap<String, String> uuidMap = new ConcurrentHashMap<>(1);
+    private final ConcurrentHashMap<String, String> uuidMap = new ConcurrentHashMap<>(1);
 
     /**
      * Unlock with uuid string.
@@ -32,6 +32,12 @@ public class ComputerController {
         return uuidMap.get("uuid");
     }
 
+    /**
+     * Restart string.
+     *
+     * @param req the req
+     * @return the string
+     */
     @PostMapping("/computer/restart")
     @SuppressWarnings("all")
     public String restart(@RequestBody Req req) {
